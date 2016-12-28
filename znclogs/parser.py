@@ -1,8 +1,11 @@
 import os
 from collections import namedtuple
+from datetime import datetime
 
 Network = namedtuple('Network', ['name', 'channel'])
 Channel = namedtuple('Channel', ['name', 'logs'])
+Log = namedtuple('Log', ['date', 'content'])
+logfile_datetime_format = '%Y-%m-%d.log'
 
 
 def collect_logs(log_path):
@@ -14,7 +17,10 @@ def collect_logs(log_path):
     networks = [
         Network(network_directory.name, [
             Channel(channel_directory.name, [
-                log_file.path
+                Log(
+                    datetime.strptime(log_file.name, logfile_datetime_format),
+                    open(log_file.path).read()
+                )
                 for log_file in
                 os.scandir(channel_directory.path)
             ])
