@@ -1,0 +1,9 @@
+{% extends 'base.html' %}
+{% block content %}
+<h1>{{ log.date }}</h1>
+<code>
+{% for line in log.content.split('\n') %}
+{{ line.replace('<', '|', 1).replace('>', '|', 1) }}<br>
+{% endfor %}
+</code>
+{% endblock %}
