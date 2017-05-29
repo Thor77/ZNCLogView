@@ -1,0 +1,13 @@
+{% extends 'base.html' %}
+{% block content %}
+<h1>{{ network.name }}</h1>
+{% if network.channel %}
+  <ul>
+  {% for channel in network.channel %}
+    <li><a href="{{ channel.name|replace('#', '') }}/index.html">{{ channel.name }}</a></li>
+  {% endfor %}
+  </ul>
+{% else %}
+No channel.
+{% endif %}
+{% endblock %}

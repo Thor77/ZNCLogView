@@ -1,0 +1,13 @@
+{% extends 'base.html' %}
+{% block content %}
+<h1>{{ channel.name }}</h1>
+{% if channel.logs %}
+  <ul>
+  {% for log in channel.logs %}
+    <li><a href="{{ log.date.timestamp() }}.html">{{ log.date }}</a></li>
+  {% endfor %}
+  </ul>
+{% else %}
+No logs.
+{% endif %}
+{% endblock %}

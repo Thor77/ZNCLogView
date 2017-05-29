@@ -1,0 +1,14 @@
+{% extends 'base.html' %}
+{% block content %}
+{% if networks %}
+<ul>
+  {% for network in networks %}
+  <li>
+    <a href="networks/{{ network.name }}/index.html">{{ network.name }}</a>
+  </li>
+  {% endfor %}
+</ul>
+{% else %}
+No networks.
+{% endif %}
+{% endblock %}
